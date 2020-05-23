@@ -1,26 +1,41 @@
-import React from 'react'
-import RCalendar from './components/calendar/Calendar'
-// import { useSelector, useDispatch } from 'react-redux';
-// import { RootState } from './store';
-// import { setDate } from './store/calendar/CalendarActions';
-import Header from './components/header/Header'
-import Overview from './components/overview/Overview'
-import './app.scss'
-import CalendarEvent from './components/calendar-event/CalendarEvent'
-
+import React, { useContext } from 'react';
+import './app.scss';
+import { ConfigContext, useConfig } from "./context/config.context";
 function App() {
-    // const date = useSelector<RootState>(state => state.calendar.date);
 
-    return (
-        <div className="app">
-            <CalendarEvent />
-            <Header />
-            <div className="main-frame">
-                <Overview />
-                <RCalendar />
-            </div>
-        </div>
-    )
+  const config = useConfig();
+
+  return (
+    <ConfigContext.Provider value={config}>
+      <div className="carnelian-studio">
+        <Header></Header>
+        <Comp2></Comp2>
+      </div>
+    </ConfigContext.Provider>
+
+
+  );
+
 }
 
-export default App
+const Header = ({ url }: any): JSX.Element => {
+  const { config, setConfig } = useContext(ConfigContext);
+  return (
+    <div onClick={() => { setConfig({ ...config, apiUrl: "toto" }) }}>
+      {config.apiUrl}
+    </div>
+  )
+}
+
+function Comp2() {
+  const { config, setConfig } = useContext(ConfigContext);
+  return (
+    <div onClick={() => {
+      setConfig({ ...config, apiUrl: "ddd" })
+    }}>
+      {config.apiUrl}
+    </div>
+  )
+}
+
+export default App;
