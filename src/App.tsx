@@ -1,41 +1,41 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import './app.scss';
-import { ConfigContext, useConfig } from "./context/config.context";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
+import Sidebar from './components/sidebar/Sidebar';
+import Footer from './components/footer/Footer';
+
 function App() {
 
-  const config = useConfig();
-
   return (
-    <ConfigContext.Provider value={config}>
-      <div className="carnelian-studio">
-        <Header></Header>
-        <Comp2></Comp2>
-      </div>
-    </ConfigContext.Provider>
 
+    <Router>
+      <div className="carnelian-studio">
+        <div className="app-content">
+          <Sidebar />
+
+          <Switch>
+            <Route path="/about">
+              current : toto
+              </Route>
+            <Route path="/users">
+              current : hello
+              </Route>
+            <Route path="/">
+              current : Dashboard
+              </Route>
+          </Switch>
+        </div>
+        <Footer />
+
+      </div>
+    </Router>
 
   );
 
-}
-
-const Header = ({ url }: any): JSX.Element => {
-  const { config, setConfig } = useContext(ConfigContext);
-  return (
-    <div onClick={() => { setConfig({ ...config, apiUrl: "toto" }) }}>
-      {config.apiUrl}
-    </div>
-  )
-}
-
-function Comp2() {
-  const { config, setConfig } = useContext(ConfigContext);
-  return (
-    <div onClick={() => {
-      setConfig({ ...config, apiUrl: "ddd" })
-    }}>
-      {config.apiUrl}
-    </div>
-  )
 }
 
 export default App;
