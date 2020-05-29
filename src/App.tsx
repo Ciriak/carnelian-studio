@@ -5,8 +5,10 @@ import {
   Switch,
   Route
 } from "react-router-dom";
-import Sidebar from './components/sidebar/Sidebar';
+
 import Footer from './components/footer/Footer';
+import Dashboard from './components/dashboard/Dashboard';
+import Navbar from './components/navbar/Navbar';
 
 function App() {
 
@@ -15,19 +17,24 @@ function App() {
     <Router>
       <div className="carnelian-studio">
         <div className="app-content">
-          <Sidebar />
 
-          <Switch>
-            <Route path="/about">
-              current : toto
+          <Navbar />
+          <div className="nav-frame">
+            <div className="container">
+              <Switch>
+                <Route path="/workshop">
+                  current : toto
               </Route>
-            <Route path="/users">
-              current : hello
+                <Route path="/account">
+                  current : hello
               </Route>
-            <Route path="/">
-              current : Dashboard
-              </Route>
-          </Switch>
+                <Route path="/">
+                  <Dashboard />
+                </Route>
+              </Switch>
+            </div>
+          </div>
+
         </div>
         <Footer />
 
