@@ -1,19 +1,9 @@
-// import { useContext } from "react";
-// import { ConfigContext } from "../../context/config.context";
 import React from "react";
 import "./navbar.scss";
-import { useDispatch, useSelector } from 'react-redux'
-import { setConfig } from "../../store/config/config.action";
-import { RootState } from "../../store";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 const CnlNavbar = () => {
 
-    const selectConfig = (state: RootState) => state.config;
-    const config = useSelector(selectConfig);
-    const location = useLocation();
-
-    const dispatch = useDispatch();
     return (
 
         <Navbar bg="light" expand="lg">
@@ -25,14 +15,14 @@ const CnlNavbar = () => {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
 
-                        <Nav.Link>
+                        <Nav.Item>
                             <Link to="/">Dashboard</Link>
-                        </Nav.Link>
+                        </Nav.Item>
 
 
-                        <Nav.Link>
+                        <Nav.Item>
                             <Link to="/workshop">Workshop</Link>
-                        </Nav.Link>
+                        </Nav.Item>
 
                         {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                         <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
@@ -56,7 +46,7 @@ const CnlNavbar = () => {
 
 
                             <NavDropdown.Divider />
-                            <NavDropdown.Item href="#">Disconnect</NavDropdown.Item>
+                            <NavDropdown.Item >Disconnect</NavDropdown.Item>
                         </NavDropdown>
                     </Nav>
                 </Navbar.Collapse>

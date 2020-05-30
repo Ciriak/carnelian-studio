@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './app.scss';
 import {
   BrowserRouter as Router,
@@ -9,8 +9,13 @@ import {
 import Footer from './components/footer/Footer';
 import Dashboard from './components/dashboard/Dashboard';
 import Navbar from './components/navbar/Navbar';
+import Connector from './connector';
 
 function App() {
+
+  useEffect(() => {
+    new Connector();
+  });
 
   return (
 
