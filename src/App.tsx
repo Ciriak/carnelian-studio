@@ -12,12 +12,9 @@ import Navbar from './components/navbar/Navbar';
 import Connector from './connector';
 import Settings from './components/settings/Settings';
 import NotificationsContainer from './components/notifications-container/NotificationsContainer';
+new Connector();
 
 function App() {
-
-  useEffect(() => {
-    new Connector();
-  });
 
   return (
 

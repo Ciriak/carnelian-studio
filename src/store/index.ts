@@ -1,5 +1,5 @@
 
-import { combineReducers } from "redux"
+import { combineReducers, createStore } from "redux"
 import configReducer from "./config/config.reducer"
 import { useStore } from "react-redux";
 import { IConfig } from "carnelian/types/interfaces/config.interface";
@@ -15,12 +15,6 @@ export const rootReducer = combineReducers({
     notifications: notificationsReducer
 })
 
-export const useCnlStore = () => {
-    return useStore<{
-        config: IConfig,
-        connector: IConnectorState,
-        notifications: INotificationsState
-    }>();
-}
+export const store = createStore(rootReducer);
 
 export type RootState = ReturnType<typeof rootReducer>
