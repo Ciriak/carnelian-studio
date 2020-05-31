@@ -35,7 +35,7 @@ const Settings = () => {
         <div className="settings">
             <div className="m-2">
                 <h3>Settings</h3>
-                <small className="form-text text-muted">Changes are automatically saved</small>
+                {/* <small className="form-text text-muted">Changes are automatically saved</small> */}
             </div>
 
 
