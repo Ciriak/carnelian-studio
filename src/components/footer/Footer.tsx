@@ -12,7 +12,7 @@ const Footer = () => {
 
     return (
         <footer className="app-footer">
-            Carnelian v{config.version} - Connected : {String(connector.connected)}
+            Carnelian v{config.version} - Connected : {String(connector.connected)} on port {String(config.socketPort)}
 
         </footer>
     )

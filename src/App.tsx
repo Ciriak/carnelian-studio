@@ -10,6 +10,8 @@ import Footer from './components/footer/Footer';
 import Dashboard from './components/dashboard/Dashboard';
 import Navbar from './components/navbar/Navbar';
 import Connector from './connector';
+import Settings from './components/settings/Settings';
+import NotificationsContainer from './components/notifications-container/NotificationsContainer';
 
 function App() {
 
@@ -21,27 +23,34 @@ function App() {
 
     <Router>
       <div className="carnelian-studio">
-        <div className="app-content">
 
-          <Navbar />
-          <div className="nav-frame">
-            <div className="container">
-              <Switch>
-                <Route path="/workshop">
-                  current : toto
-              </Route>
-                <Route path="/account">
-                  current : hello
-              </Route>
-                <Route path="/">
-                  <Dashboard />
+
+        <Navbar />
+
+
+        <div className="nav-frame">
+          <div className="container">
+            <Switch>
+              <Route path="/workshop">
+                current : toto
                 </Route>
-              </Switch>
-            </div>
+              <Route path="/account">
+                current : hello
+                </Route>
+              <Route path="/settings">
+                <Settings />
+              </Route>
+              <Route path="/">
+                <Dashboard />
+              </Route>
+            </Switch>
           </div>
-
         </div>
+
+        <NotificationsContainer />
+
         <Footer />
+
 
       </div>
     </Router>
