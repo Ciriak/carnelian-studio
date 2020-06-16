@@ -1,20 +1,11 @@
+import connector from "./connector";
+import config from "./config";
+import scripts from "./scripts";
 
-import { combineReducers, createStore } from "redux"
-import configReducer from "./config/config.reducer"
-import { useStore } from "react-redux";
-import { IConfig } from "carnelian/types/interfaces/config.interface";
-import connectorReducer, { IConnectorState } from "./connector/connector.reducer";
-import notificationsReducer, { INotificationsState } from "./notifications/notifications.reducer";
+const store = {
+  connector,
+  config,
+  scripts
+};
 
-// bootstrap 
-import 'bootstrap/dist/css/bootstrap.min.css';
-
-export const rootReducer = combineReducers({
-    config: configReducer,
-    connector: connectorReducer,
-    notifications: notificationsReducer
-})
-
-export const store = createStore(rootReducer);
-
-export type RootState = ReturnType<typeof rootReducer>
+export default store;

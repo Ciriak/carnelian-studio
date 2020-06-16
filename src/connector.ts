@@ -1,19 +1,19 @@
-import { store } from "./store"
-import { setConnected } from "./store/connector/connector.action";
-import { Dispatch } from "react";
+import store from "./store";
 import Carnelian from "carnelian";
-import { ClientEvent } from "carnelian/types/enums/clientEvent.enums";
-import ISocketData from "carnelian/types/interfaces/socketData.interface";
-import { setConfig } from "./store/config/config.action";
+import ISocketData from 'carnelian/types/interfaces/socketData.interface';
+import { ClientEvent } from 'carnelian/types/enums/clientEvent.enums';
 /**
  * Manage the connection and the events between the app and the Carnelian process
  */
 export default class Connector {
-    private dispatch: Dispatch<any>;
-    private ws: WebSocket;
+
+    private ws?: WebSocket;
+
+
+    /**
+     * Manage the connection between the main process and the studio
+     */
     constructor() {
-        this.dispatch = store.dispatch;
-        this.ws = new WebSocket('ws://localhost:2319');
         this.attemptConnection();
     }
 
@@ -22,13 +22,13 @@ export default class Connector {
      * Attempt a connection to the Carnelian process
      */
     attemptConnection() {
-
         console.log("Attempting connection to the carnelian process...")
+        this.ws = new WebSocket('ws://localhost:2319');
 
         // try to connect
 
         this.ws.onopen = (e) => {
-            this.handleConnected(this.ws);
+            this.handleConnected(this.ws as WebSocket);
         }
 
         // Retry in 10 if failed to connect
@@ -53,6 +53,12 @@ export default class Connector {
      */
     private send(event: ClientEvent, data?: any) {
 
+
+        if (!this.ws) {
+            return;
+        }
+
+
         this.ws.send(JSON.stringify({
             event,
             data
@@ -63,7 +69,7 @@ export default class Connector {
 
     private handleConnected(ws: WebSocket) {
         console.log("Connected to the Carnelian process !");
-        this.dispatch(setConnected());
+        store.connector.dispatch.setConnected(true);
         this.send(Carnelian.Enums.ClientEvent.ClientEvent.REQUEST_CONFIG);
 
         ws.onmessage = (message) => {
@@ -98,7 +104,12 @@ export default class Connector {
         switch (socket.event) {
             case Carnelian.Enums.ServerEvent.ServerEvent.SEND_CONFIG:
 
-                this.dispatch(setConfig(socket.data));
+                store.config.dispatch.setConfig(socket.data);
+
+                break;
+            case Carnelian.Enums.ServerEvent.ServerEvent.SEND_SCRIPT:
+
+                store.scripts.dispatch.setScript(socket.data);
 
                 break;
 
