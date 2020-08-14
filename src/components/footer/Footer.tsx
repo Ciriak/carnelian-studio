@@ -1,21 +1,19 @@
-import React from "react";
-import "./footer.scss";
-import { RootState } from "../../store";
-import { useSelector } from "react-redux";
+import React from 'react';
+import './footer.scss';
 
+import { useRecoilState } from 'recoil';
+import configState from '../../atoms/config';
+import connectorState from '../../atoms/connector';
 
 const Footer = () => {
-    const selectConfig = (state: RootState) => state.config;
-    const selectConnector = (state: RootState) => state.connector;
-    const config = useSelector(selectConfig);
-    const connector = useSelector(selectConnector);
+  const [config] = useRecoilState(configState);
+  const [connector] = useRecoilState(connectorState);
 
-    return (
-        <footer className="app-footer">
-            Carnelian v{config.version} - Connected : {String(connector.connected)} on port {String(config.socketPort)}
-
-        </footer>
-    )
-}
+  return (
+    <footer className="app-footer">
+      Carnelian v{config.version} - Connected : {String(connector.connected)} on port {String(config.socketPort)}
+    </footer>
+  );
+};
 
 export default Footer;
