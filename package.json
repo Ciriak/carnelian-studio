@@ -14,6 +14,7 @@
     "@types/react-redux": "^7.1.9",
     "@types/react-router-dom": "^5.1.5",
     "bootstrap": "^4.5.2",
+    "bootswatch": "^4.5.2",
     "carnelian": "git+https://github.com/Ciriak/Carnelian.git",
     "lodash": "^4.17.20",
     "mdi-react": "^7.3.0",

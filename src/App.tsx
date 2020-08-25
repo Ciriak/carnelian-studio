@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './app.scss';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-
 import Footer from './components/footer/Footer';
 import Dashboard from './components/dashboard/Dashboard';
 import Navbar from './components/navbar/Navbar';

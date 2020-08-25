@@ -1,11 +1,5 @@
 import React, { useState } from 'react';
-
-import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '../../store';
 import { useForm } from 'react-hook-form';
-import { setConfig } from '../../store/config/config.action';
-import { addNotification } from '../../store/notifications/notifications.action';
-import { guid } from '../../utils';
 import { useRecoilState } from 'recoil';
 import configState from '../../atoms/config';
 
