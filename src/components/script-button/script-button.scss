@@ -1,0 +1,41 @@
+.script-btn {
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  position: relative;
+  .btn-border {
+    position: absolute;
+    width: 100%;
+    border: 2px #ccc solid;
+    border-radius: 100%;
+    height: 100%;
+  }
+  .status-icon {
+    position: absolute;
+  }
+  &.not-valid {
+    opacity: 0.5;
+    cursor: default;
+  }
+
+  &.processing {
+    .btn-border {
+      border-right-color: #fff;
+      animation: rotate 0.5s infinite linear;
+    }
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

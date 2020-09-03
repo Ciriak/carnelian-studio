@@ -1,7 +1,6 @@
 import { useEffect, useCallback } from 'react';
 import { useRecoilState } from 'recoil';
 import connectorState from '../../atoms/connector';
-import scriptsListState from '../../atoms/scriptsList';
 import Carnelian from 'carnelian';
 import { parseMessage } from '../../utils/socket.utils';
 import ISocketData from 'carnelian/types/interfaces/socketData.interface';
