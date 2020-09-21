@@ -79,7 +79,7 @@ const ScriptsList = (props: IScriptsListprops) => {
 
   const [connector] = useRecoilState(connectorState);
   const handleEditScript = (script: IScript) => {
-    connector.manager.send(Carnelian.Enums.ClientEvent.ClientEvent.RUN_SCRIPT, script.id);
+    connector.manager.send(Carnelian.Enums.ClientEvent.ClientEvent.OPEN_SCRIPT, script);
   };
 
   return (

@@ -18,7 +18,7 @@ const Connector = () => {
       switch (socket.event) {
         case Carnelian.Enums.ServerEvent.ServerEvent.SEND_CONFIG:
           setConfig(socket.data);
-          connector.manager.send(Carnelian.Enums.ClientEvent.ClientEvent.REQUEST_SCRIPTS_LIST);
+          // connector.manager.send(Carnelian.Enums.ClientEvent.ClientEvent.REQUEST_CONFIG);
 
           break;
         case Carnelian.Enums.ServerEvent.ServerEvent.SEND_SCRIPT:
@@ -32,7 +32,7 @@ const Connector = () => {
           break;
       }
     },
-    [connector.manager, setConfig, setScript]
+    [setConfig, setScript]
   );
 
   useEffect(() => {
