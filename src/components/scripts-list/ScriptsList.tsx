@@ -29,7 +29,7 @@ const ScriptsList = (props: IScriptsListprops) => {
           return (
             <tr key={scriptIndex}>
               <th scope="row">
-                <ScriptButton script={script} />{' '}
+                <ScriptButton script={script} />
               </th>
               <td>{script.metadata.description || 'No details'}</td>
               <td>{script.metadata.version || '0.0.1'}</td>

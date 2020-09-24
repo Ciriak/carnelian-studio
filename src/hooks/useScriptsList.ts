@@ -14,8 +14,9 @@ export function useScriptsList() {
    */
   const setScript = (script: IScript) => {
     const snap = { ...rcScriptsList };
-
+    snap.scripts = [...rcScriptsList.scripts]; // prevent object is not extensible
     const index = findIndex(snap.scripts, { id: script.id });
+
     if (~index) {
       snap.scripts.splice(index, 1, script); // replace
     } else {

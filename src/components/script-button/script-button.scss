@@ -9,6 +9,7 @@
   padding: 0;
   user-select: none;
   position: relative;
+  cursor: pointer;
   .btn-border {
     position: absolute;
     width: 100%;
@@ -19,9 +20,18 @@
   .status-icon {
     position: absolute;
   }
+
   &.not-valid {
     opacity: 0.5;
     cursor: default;
+  }
+
+  &.valid {
+    &:hover {
+      .btn-border {
+        border-color: #fff;
+      }
+    }
   }
 
   &.processing {
